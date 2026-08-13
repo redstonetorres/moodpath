@@ -77,15 +77,6 @@
   function boot() {
     var status = Store.boot();
 
-    // ?demo=1 —— 一键灌入示例数据，用来快速体验
-    if (status === 'new' && /[?&]demo=1/.test(location.search)) {
-      Store.createSpace('示例日记');
-      Store.data.entries = Seed.build();
-      Store.persist();
-      startApp();
-      return;
-    }
-
     if (status === 'ready') { startApp(); return; }
 
     $('#gate').classList.remove('hidden');
@@ -125,15 +116,6 @@
   });
   $('#gateSpaceName').addEventListener('keydown', function (e) {
     if (e.key === 'Enter') $('#gateCreate').click();
-  });
-
-  $('#gateDemo').addEventListener('click', function () {
-    Store.createSpace('示例日记');
-    Store.data.entries = Seed.build();
-    Store.persist().then(function () {
-      startApp();
-      toast('这是一份示例，随时可以在设置里清空');
-    });
   });
 
   $('#gateRestore').addEventListener('click', function () {
