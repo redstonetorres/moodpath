@@ -1,0 +1,6 @@
+# 禁用 JS/CSS 长缓存，确保每次 git push 后用户刷新即见新效果
+# （尤其解决手机端无法硬刷新、一直显示旧代码的问题）
+/js/*
+  Cache-Control: no-cache
+/css/*
+  Cache-Control: no-cache
